@@ -10,8 +10,30 @@ public class Monk extends Character{
     private String[] knownTechniques;
     private String mantra;
 
-    public Monk() {
-        // Конструктор по умолчанию без параметров
+    public Monk(String name, Coordinates coordinates) {
+        super(name, coordinates);
+    }
+
+
+    public void findNearestEnemy(Monk[] enemies) {
+        Monk nearestEnemy = null;
+        double minDistance = Double.MAX_VALUE;
+
+        for (Monk enemy : enemies) {
+            double distance = calculateDistance(enemy.getCoordinates());
+            if (distance < minDistance) {
+                minDistance = distance;
+                nearestEnemy = enemy;
+            }
+        }
+
+        System.out.println(getName() + " found nearest enemy: " + nearestEnemy.getName());
+    }
+
+    private double calculateDistance(Coordinates enemyCoordinates) {
+        int xDiff = getCoordinates().getX() - enemyCoordinates.getX();
+        int yDiff = getCoordinates().getY() - enemyCoordinates.getY();
+        return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
     }
 
     @Override

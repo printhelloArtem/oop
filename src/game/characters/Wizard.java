@@ -12,31 +12,34 @@ public class Wizard extends Character{
 
     public Wizard(
 
-            int health, int strength, int agility, int defense, String weapon,
-            String staffType, int magicPower, boolean hasFamiliar,
-            int manaPool, String favoriteSpell, boolean isTeleportationMaster,
-            String knownSpells, int meditationLevel
+            String name,Coordinates coordinates
 
     ) {
+        super(name,coordinates);
 
-        this.health = health;
-        this.strength = strength;
-
-        this.defense = defense;
-
-
-
-
-        this.staffType = staffType;
-        this.magicPower = magicPower;
-        this.hasFamiliar = hasFamiliar;
-        this.manaPool = manaPool;
-        this.favoriteSpell = favoriteSpell;
-        this.isTeleportationMaster = isTeleportationMaster;
-        this.knownSpells = knownSpells;
-        this.meditationLevel = meditationLevel;
 
     }
+    public void findNearestEnemy(Wizard[] enemies) {
+        Wizard nearestEnemy = null;
+        double minDistance = Double.MAX_VALUE;
+
+        for (Wizard enemy : enemies) {
+            double distance = calculateDistance(enemy.getCoordinates());
+            if (distance < minDistance) {
+                minDistance = distance;
+                nearestEnemy = enemy;
+            }
+        }
+
+        System.out.println(getName() + " found nearest enemy: " + nearestEnemy.getName());
+    }
+
+    private double calculateDistance(Coordinates enemyCoordinates) {
+        int xDiff = getCoordinates().getX() - enemyCoordinates.getX();
+        int yDiff = getCoordinates().getY() - enemyCoordinates.getY();
+        return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+    }
+
 
     @Override
     public void attack() {

@@ -10,10 +10,35 @@ public class Spearman extends Character{
     private String battleCry;
     private boolean isShielded;
 
-    public Spearman() {
+    public Spearman(String name, Coordinates coordinates) {
+
+        super(name, coordinates);
         // Конструктор по умолчанию без параметров
+
+
     }
 
+
+    public void findNearestEnemy(Spearman[] enemies) {
+        Spearman nearestEnemy = null;
+        double minDistance = Double.MAX_VALUE;
+
+        for (Spearman enemy : enemies) {
+            double distance = calculateDistance(enemy.getCoordinates());
+            if (distance < minDistance) {
+                minDistance = distance;
+                nearestEnemy = enemy;
+            }
+        }
+
+        System.out.println(getName() + " found nearest enemy: " + nearestEnemy.getName());
+    }
+
+    private double calculateDistance(Coordinates enemyCoordinates) {
+        int xDiff = getCoordinates().getX() - enemyCoordinates.getX();
+        int yDiff = getCoordinates().getY() - enemyCoordinates.getY();
+        return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+    }
     @Override
     public void attack() {
         System.out.println("Spearman thrusts with a powerful spear");

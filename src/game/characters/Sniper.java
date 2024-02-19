@@ -11,8 +11,31 @@ public class Sniper extends Character {
         private int camouflageSkill;
         private String[] knownSnipingLocations;
 
-        public Sniper() {
+        public Sniper(String name,Coordinates coordinates) {
             // Конструктор по умолчанию без параметров
+                super(name,coordinates);
+        }
+
+
+        public void findNearestEnemy(Sniper[] enemies) {
+                Sniper nearestEnemy = null;
+                double minDistance = Double.MAX_VALUE;
+
+                for (Sniper enemy : enemies) {
+                        double distance = calculateDistance(enemy.getCoordinates());
+                        if (distance < minDistance) {
+                                minDistance = distance;
+                                nearestEnemy = enemy;
+                        }
+                }
+
+                System.out.println(getName() + " found nearest enemy: " + nearestEnemy.getName());
+        }
+
+        private double calculateDistance(Coordinates enemyCoordinates) {
+                int xDiff = getCoordinates().getX() - enemyCoordinates.getX();
+                int yDiff = getCoordinates().getY() - enemyCoordinates.getY();
+                return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
         }
 
         @Override
