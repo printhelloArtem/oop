@@ -22,7 +22,7 @@ public class Sniper extends Character {
                 double minDistance = Double.MAX_VALUE;
 
                 for (Sniper enemy : enemies) {
-                        double distance = calculateDistance(enemy.getCoordinates());
+                        double distance = enemy.getCoordinates().calculateDistance(getCoordinates());
                         if (distance < minDistance) {
                                 minDistance = distance;
                                 nearestEnemy = enemy;
@@ -32,11 +32,7 @@ public class Sniper extends Character {
                 System.out.println(getName() + " found nearest enemy: " + nearestEnemy.getName());
         }
 
-        private double calculateDistance(Coordinates enemyCoordinates) {
-                int xDiff = getCoordinates().getX() - enemyCoordinates.getX();
-                int yDiff = getCoordinates().getY() - enemyCoordinates.getY();
-                return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
-        }
+
 
         @Override
         public void attack() {

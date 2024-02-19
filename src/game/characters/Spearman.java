@@ -19,12 +19,12 @@ public class Spearman extends Character{
     }
 
 
-    public void findNearestEnemy(Spearman[] enemies) {
+    public void findNearestEnemy(Spearman[] enemies) {//  метод поиска врагов
         Spearman nearestEnemy = null;
         double minDistance = Double.MAX_VALUE;
 
         for (Spearman enemy : enemies) {
-            double distance = calculateDistance(enemy.getCoordinates());
+            double distance = enemy.getCoordinates().calculateDistance(getCoordinates());
             if (distance < minDistance) {
                 minDistance = distance;
                 nearestEnemy = enemy;
@@ -34,11 +34,7 @@ public class Spearman extends Character{
         System.out.println(getName() + " found nearest enemy: " + nearestEnemy.getName());
     }
 
-    private double calculateDistance(Coordinates enemyCoordinates) {
-        int xDiff = getCoordinates().getX() - enemyCoordinates.getX();
-        int yDiff = getCoordinates().getY() - enemyCoordinates.getY();
-        return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
-    }
+
     @Override
     public void attack() {
         System.out.println("Spearman thrusts with a powerful spear");
