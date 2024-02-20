@@ -1,8 +1,25 @@
 package game.characters;
 
  public class Archer extends Character {
-     public Archer(String name, Coordinates coordinates) {
-         super(name, coordinates);
+
+     private int arrows;
+
+     public Archer(String name, Coordinates coordinates, int arrows) {
+         super(name, coordinates, 0);
+         this.arrows = arrows;
+     }
+
+     public int getArrows() {
+         return arrows;
+     }
+
+     @Override
+     public void step() {
+         if (isAlive() && arrows > 0) {
+             findNearestEnemy();
+             shoot();
+             decreaseArrows();
+         }
      }
 
      public void findNearestEnemy(Archer[] enemies) {
@@ -20,6 +37,22 @@ package game.characters;
          System.out.println(getName() + " found nearest enemy: " + nearestEnemy.getName());
      }
 
+     private void findNearestEnemy() {
+         System.out.println(getName() + " found nearest enemy and aims.");
+     }
+
+     private void shoot() {
+         System.out.println(getName() + " shoots!");
+     }
+
+     private boolean isAlive() {
+         return true; // Проверка, жив ли лучник
+     }
+
+     public void decreaseArrows() {
+         arrows--;
+         System.out.println(arrows);
+     }
 
 
      @Override

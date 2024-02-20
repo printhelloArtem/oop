@@ -11,7 +11,7 @@ public class Monk extends Character{
     private String mantra;
 
     public Monk(String name, Coordinates coordinates) {
-        super(name, coordinates);
+        super(name, coordinates,2);
     }
 
 
@@ -30,6 +30,8 @@ public class Monk extends Character{
         System.out.println(getName() + " found nearest enemy: " + nearestEnemy.getName());
     }
 
+    public void step() {
+    }
 
 
     @Override

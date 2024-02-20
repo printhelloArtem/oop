@@ -11,9 +11,12 @@ public class Sniper extends Character {
         private int camouflageSkill;
         private String[] knownSnipingLocations;
 
-        public Sniper(String name,Coordinates coordinates) {
+        private int arrows;
+
+        public Sniper(String name,Coordinates coordinates,int arrows) {
             // Конструктор по умолчанию без параметров
-                super(name,coordinates);
+                super(name,coordinates,1);
+                this.arrows = arrows;
         }
 
 
@@ -32,6 +35,32 @@ public class Sniper extends Character {
                 System.out.println(getName() + " found nearest enemy: " + nearestEnemy.getName());
         }
 
+        public void step() {
+                if (isAlive() && arrows > 0) {
+                        findNearestEnemy();
+                        shoot();
+                        decreaseArrows();
+                }
+        }
+
+
+        private void shoot() {
+                System.out.println(getName() + " shoots!");
+        }
+
+        public void decreaseArrows() {
+                arrows--;
+                System.out.println(arrows);
+        }
+
+        private void findNearestEnemy() {
+                System.out.println(getName() + " found nearest enemy and aims.");
+        }
+
+        private boolean isAlive() {
+                return true; // Проверка, жив ли лучник
+        }
+
 
 
         @Override
@@ -39,7 +68,9 @@ public class Sniper extends Character {
             System.out.println("Sniper takes a precise shot");
         }
 
-        @Override
+
+
+                @Override
         public void defend() {
             System.out.println("Sniper finds cover");
         }

@@ -10,7 +10,7 @@ public class Peasant extends Character {
     protected int dexterity;
 
     public Peasant(String name, Coordinates coordinates) {
-        super(name, coordinates);
+        super(name, coordinates,1);
     }
 
 
@@ -33,6 +33,10 @@ public class Peasant extends Character {
 
 
     // Конструктор, геттеры, сеттеры
+
+    public void step() {
+    }
+
 
     @Override
     public void attack() {

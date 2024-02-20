@@ -15,7 +15,7 @@ public class Wizard extends Character{
             String name,Coordinates coordinates
 
     ) {
-        super(name,coordinates);
+        super(name,coordinates,1);
 
 
     }
@@ -34,6 +34,8 @@ public class Wizard extends Character{
         System.out.println(getName() + " found nearest enemy: " + nearestEnemy.getName());
     }
 
+    public void step() {
+    }
 
 
 

@@ -15,7 +15,7 @@ public class Rogue extends Character {
     public Rogue(String name,Coordinates coordinates) {
 
         // Конструктор по умолчанию без параметров
-        super(name,coordinates);
+        super(name,coordinates,2);
     }
 
     public void findNearestEnemy(Rogue[] enemies) {
@@ -33,6 +33,8 @@ public class Rogue extends Character {
         System.out.println(getName() + " found nearest enemy: " + nearestEnemy.getName());
     }
 
+    public void step() {
+    }
 
 
     @Override

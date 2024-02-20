@@ -12,7 +12,7 @@ public class Spearman extends Character{
 
     public Spearman(String name, Coordinates coordinates) {
 
-        super(name, coordinates);
+        super(name, coordinates,3);
         // Конструктор по умолчанию без параметров
 
 
@@ -32,6 +32,9 @@ public class Spearman extends Character{
         }
 
         System.out.println(getName() + " found nearest enemy: " + nearestEnemy.getName());
+    }
+
+    public void step() {
     }
 
 
