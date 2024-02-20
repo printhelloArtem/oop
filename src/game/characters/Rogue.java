@@ -15,7 +15,7 @@ public class Rogue extends Character {
     public Rogue(String name,Coordinates coordinates) {
 
         // Конструктор по умолчанию без параметров
-        super(name,coordinates,2);
+        super(name,coordinates,2,0);
     }
 
     public void findNearestEnemy(Rogue[] enemies) {

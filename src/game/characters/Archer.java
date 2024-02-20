@@ -5,7 +5,7 @@ package game.characters;
      private int arrows;
 
      public Archer(String name, Coordinates coordinates, int arrows) {
-         super(name, coordinates, 0);
+         super(name, coordinates, 3,1);
          this.arrows = arrows;
      }
 

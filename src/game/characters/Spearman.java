@@ -12,7 +12,7 @@ public class Spearman extends Character{
 
     public Spearman(String name, Coordinates coordinates) {
 
-        super(name, coordinates,0);
+        super(name, coordinates,0,1);
         // Конструктор по умолчанию без параметров
 
 

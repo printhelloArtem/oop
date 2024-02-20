@@ -10,7 +10,7 @@ public class Peasant extends Character {
     protected int dexterity;
 
     public Peasant(String name, Coordinates coordinates) {
-        super(name, coordinates,1);
+        super(name, coordinates,1,0);
     }
 
 

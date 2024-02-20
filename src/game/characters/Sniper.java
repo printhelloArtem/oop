@@ -15,7 +15,7 @@ public class Sniper extends Character {
 
         public Sniper(String name,Coordinates coordinates,int arrows) {
             // Конструктор по умолчанию без параметров
-                super(name,coordinates,0);
+                super(name,coordinates,1,0);
                 this.arrows = arrows;
         }
 

@@ -15,7 +15,7 @@ public class Wizard extends Character{
     public Wizard(String name,Coordinates coordinates,int mana){
 
 
-        super(name,coordinates,1);
+        super(name,coordinates,2,1);
         this.mana = mana;
 
 

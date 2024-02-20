@@ -11,7 +11,7 @@ public class Monk extends Character{
     private String mantra;
 
     public Monk(String name, Coordinates coordinates) {
-        super(name, coordinates,2);
+        super(name, coordinates,2,0);
     }
 
 
