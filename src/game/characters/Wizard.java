@@ -10,12 +10,17 @@ public class Wizard extends Character{
     private String knownSpells;
     private int meditationLevel;
 
-    public Wizard(
+    private int mana;
 
-            String name,Coordinates coordinates
+    public Wizard(String name,Coordinates coordinates,int mana){
 
-    ) {
+
         super(name,coordinates,1);
+        this.mana = mana;
+
+
+
+
 
 
     }
@@ -31,11 +36,35 @@ public class Wizard extends Character{
             }
         }
 
+
         System.out.println(getName() + " found nearest enemy: " + nearestEnemy.getName());
     }
 
     public void step() {
+        if (isAlive() && mana > 0) {
+            findNearestEnemy();
+            shoot();
+            decreaseArrows();
+        }
     }
+
+    private boolean isAlive() {
+        return true; // Проверка, жив ли маг
+    }
+
+    public void decreaseArrows() {
+       mana--;
+        System.out.println("pull: " + (mana));
+    }
+
+    private void shoot() {
+        System.out.println(getName() + " shoots!");
+    }
+
+    private void findNearestEnemy() {
+        System.out.println(getName() + " found nearest enemy and aims.");
+    }
+
 
 
 

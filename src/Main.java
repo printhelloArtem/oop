@@ -8,15 +8,23 @@ import java.util.Comparator;
 public class Main {
     public static void main(String[] args) {
         Character[] characters = {
-                new Archer("Archer1", new Coordinates(3, 5), 10),
-                new Sniper("Sniper",new Coordinates(3,5),4)
+                new Archer("Archer1", new Coordinates(3, 5), 10),  //   инициатива 0
+                new Sniper("Sniper",new Coordinates(3,5),4),// инициатива 0
+                new Wizard("Wizard",new Coordinates(4,7),100)// инициатива 1
         };
+
 
         Arrays.sort(characters, Comparator.comparingInt(Character::getInitiative).reversed());
 
         for (Character character : characters) {
             character.step();
         }
+        /*
+        ПОЖАЛУЙСТА ЕСЛИ ЧТО ТО НЕ ТАК ДАЙТЕ ВТОРОЙ ШАНС ИСПРАВИТЬ!СПС
+         */
+
+
 
     }
+
 }

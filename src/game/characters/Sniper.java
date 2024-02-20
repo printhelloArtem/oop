@@ -15,7 +15,7 @@ public class Sniper extends Character {
 
         public Sniper(String name,Coordinates coordinates,int arrows) {
             // Конструктор по умолчанию без параметров
-                super(name,coordinates,1);
+                super(name,coordinates,0);
                 this.arrows = arrows;
         }
 
@@ -49,8 +49,8 @@ public class Sniper extends Character {
         }
 
         public void decreaseArrows() {
-                arrows--;
-                System.out.println(arrows);
+                arrows --;
+                System.out.println("bullets: " + (arrows));
         }
 
         private void findNearestEnemy() {
@@ -58,7 +58,7 @@ public class Sniper extends Character {
         }
 
         private boolean isAlive() {
-                return true; // Проверка, жив ли лучник
+                return true; // Проверка, жив ли снайпер
         }
 
 

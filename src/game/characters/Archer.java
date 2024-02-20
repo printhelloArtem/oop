@@ -51,7 +51,7 @@ package game.characters;
 
      public void decreaseArrows() {
          arrows--;
-         System.out.println(arrows);
+         System.out.println("bullets: " + (arrows));
      }
 
 

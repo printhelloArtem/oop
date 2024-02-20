@@ -30,9 +30,11 @@ public class Monk extends Character{
         System.out.println(getName() + " found nearest enemy: " + nearestEnemy.getName());
     }
 
-    public void step() {
-    }
 
+
+    private void findNearestEnemy() {
+        System.out.println(getName() + " found nearest enemy and aims.");
+    }
 
     @Override
     public void attack() {
