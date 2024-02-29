@@ -5,7 +5,7 @@ public abstract class Character implements Steppable  {
     protected int strength;
     protected int defense;
 
-    private int initiative;
+   public int initiative;
 
     private Coordinates coordinates; // добавлено поле для хранения координат
     private String name;
@@ -32,16 +32,16 @@ public abstract class Character implements Steppable  {
     }
 
     public int getInitiative() {
+
         return initiative;
     }
 
 
 
 
-    @Override
-    public  void step(){
 
-    }
+
+    public abstract void step();
     public abstract void attack();
 
     public abstract void defend();
