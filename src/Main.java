@@ -18,7 +18,7 @@ public class Main {
         // Создаем координаты и пехотинца
         Coordinates spearmanCoordinates = new Coordinates(3, 4);
         Spearman team1 = new Spearman("Team1", spearmanCoordinates, enemies);
-        Spearman team1Spear = new Spearman("Team1", spearmanCoordinates, enemies);
+
 
 
         Coordinates coordinatesTeam2 = new Coordinates(2,5);
