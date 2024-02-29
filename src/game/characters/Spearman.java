@@ -15,9 +15,11 @@ public class Spearman extends Character{
     private boolean isShielded;
     private List<Spearman> enemies;
 
+
     public Spearman(String name, Coordinates coordinates,List<Spearman>enemies) {
 
         super(name, coordinates,1,1);
+
         this.enemies = enemies;
         // Конструктор по умолчанию без параметров
 
@@ -45,6 +47,7 @@ public class Spearman extends Character{
                 } else {
                     // Противник в другой клетке, двигаемся в его направлении
                     moveTowardsEnemy(target);
+                    attack(target);
                 }
             }
         }

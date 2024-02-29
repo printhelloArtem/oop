@@ -1,6 +1,8 @@
 package game.characters;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Monk extends Character {
     private String martialArtsStyle;
@@ -11,13 +13,14 @@ public class Monk extends Character {
     private boolean isMartialArtsMaster;
     private String[] knownTechniques;
     private String mantra;
+     private List<Monk> enemies;
 
 
 
 
-    private List<Spearman> enemies;
 
-    public Monk(String name, Coordinates coordinates, List<Spearman> enemies) {
+
+    public Monk(String name, Coordinates coordinates, List<Monk> enemies) {
         super(name, coordinates, 2, 0);
         this.enemies = enemies;
     }
@@ -25,7 +28,7 @@ public class Monk extends Character {
     @Override
     public void step() {
         if (isAlive()) {
-            Spearman target = findNearestEnemy(); // Находит ближайшего противника
+            Monk target = findNearestEnemy(); // Находит ближайшего противника
             System.out.println(getName() + " is taking a step.");
             if (target != null) {
                 if (isAdjacent(target)) {
@@ -34,9 +37,14 @@ public class Monk extends Character {
                 } else {
                     // Противник в другой клетке, двигаемся в его направлении
                     moveTowardsEnemy(target);
+                    attack(target);
                 }
             }
         }
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     private void attack(Character target) {
@@ -44,7 +52,7 @@ public class Monk extends Character {
         System.out.println(getName() + " attacks " + target.getName() + "!");
     }
 
-    private void moveTowardsEnemy(Spearman target) {
+    private void moveTowardsEnemy(Monk target) {
         int dX = target.getCoordinates().getX() - getCoordinates().getX();
         int dY = target.getCoordinates().getY() - getCoordinates().getY();
 
@@ -72,19 +80,32 @@ public class Monk extends Character {
         return health > 0;
     }
 
-    private Spearman findNearestEnemy() {//  метод поиска врагов
-        Spearman nearestEnemy = null;
+    public Monk findNearestEnemy() {
+        List<Monk> nearestEnemies = new ArrayList<>();
         double minDistance = Double.MAX_VALUE;
 
-        for (Spearman enemy : enemies) {
+        for (Monk enemy : enemies) {
             double distance = enemy.getCoordinates().calculateDistance(getCoordinates());
             if (distance < minDistance) {
                 minDistance = distance;
-                nearestEnemy = enemy;
+                nearestEnemies.clear();
+                nearestEnemies.add(enemy);
+            } else if (distance == minDistance) {
+                nearestEnemies.add(enemy);
             }
         }
-        return nearestEnemy;
+
+        // Выбираем случайного врага из ближайших, если они есть
+        if (!nearestEnemies.isEmpty()) {
+            int randomIndex = new Random().nextInt(nearestEnemies.size());
+          Monk nearestEnemy = nearestEnemies.get(randomIndex);
+            System.out.println(getName() + " found nearest enemy: " + nearestEnemy.getName());
+            return nearestEnemy;
+        }
+
+        return null;
     }
+
 
     @Override
     public void attack() {
