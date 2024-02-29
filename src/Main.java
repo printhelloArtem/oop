@@ -16,7 +16,10 @@ public class Main {
 
         // Создаем координаты и пехотинца
         Coordinates spearmanCoordinates = new Coordinates(0, 0);
-        Spearman playerSpearman = new Spearman("Player", spearmanCoordinates, enemies);
+        Spearman team1 = new Spearman("Team1", spearmanCoordinates, enemies);
+
+        Coordinates coordinatesTeam2 = new Coordinates(2,4);
+        Spearman team2 = new Spearman("Team2",coordinatesTeam2,enemies);
 
         // Добавляем противников в список
         Spearman enemy1 = new Spearman("Enemy1", new Coordinates(2, 3), new ArrayList<>());
@@ -26,14 +29,14 @@ public class Main {
         enemies.add(enemy2);
         // Вызываем метод step() для каждого раунда или по необходимости
 
+        team2.setHealth(100);
+        team1.setHealth(100);
+        team1.setHealth(100);
+        team1.setHealth(100);
 
-        playerSpearman.setHealth(100);
-        playerSpearman.setHealth(100);
-        playerSpearman.setHealth(100);
-
-
-        playerSpearman.step();
-        playerSpearman.step();
-        playerSpearman.step();
+        team2.step();
+        team1.step();
+        team1.step();
+        team1.step();
         }
     }
